@@ -1,0 +1,7 @@
+{
+"name": "textingfactory-frontend",
+"version": "1.0.0",
+"private": true,
+"scripts": {"start":"react-scripts start","build":"react-scripts build"},
+"dependencies": {"react":"^18.x","react-dom":"^18.x","react-router-dom":"^6.x","axios":"^1.x","socket.io-client":"^4.x","recharts":"^2.x","tailwindcss":"^3.x"}
+}
