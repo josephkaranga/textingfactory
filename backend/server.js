@@ -9,6 +9,11 @@ import { Server } from 'socket.io';
 import authRoutes from './routes/authRoutes.js';
 import paymentRoutes from './routes/paymentRoutes.js';
 import chatRoutes from './routes/chatRoutes.js';
+import dashboardRoutes from "./routes/dashboard.js";
+import authRoutes from "./routes/authRoutes.js";
+
+app.use("/api/auth", authRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 dotenv.config();
 
@@ -48,3 +53,22 @@ export { io };
 
 const PORT = process.env.PORT || 5000;
 httpServer.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+import express from "express";
+import cors from "cors";
+import dashboardRoutes from "./routes/dashboard.js";
+
+const app = express();
+
+// Middleware
+app.use(cors({
+  origin: "https://textingfactory-2.onrender.com", // your frontend URL
+  credentials: true
+}));
+app.use(express.json());
+
+// Routes
+app.use("/api/dashboard", dashboardRoutes);
+
+// Start server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
