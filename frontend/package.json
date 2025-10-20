@@ -1,9 +1,9 @@
 {
-  "homepage": "https://textingfactory-2.onrender.com",
   "name": "textingfactory-frontend",
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "homepage": "https://textingfactory-2.onrender.com",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -11,18 +11,18 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "axios": "^1.x",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.x",
-    "react-scripts": "^0.0.0",
-    "recharts": "^2.x",
-    "socket.io-client": "^4.x",
-    "tailwindcss": "^3.x"
+    "axios": "^1.6.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.14.0",
+    "react-scripts": "^5.0.1",
+    "recharts": "^2.7.0",
+    "socket.io-client": "^4.7.0",
+    "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
-    "autoprefixer": "^10.x",
-    "postcss": "^8.x"
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.26"
   },
   "browserslist": {
     "production": [
