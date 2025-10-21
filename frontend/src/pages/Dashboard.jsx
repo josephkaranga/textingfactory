@@ -1,25 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import API from '../api/api.js';
+import React, { useEffect, useState } from "react";
+import API from "../api/api";
 
 export default function Dashboard() {
   const [data, setData] = useState(null);
-  const [error, setError] = useState('');
 
   useEffect(() => {
-    API.get('/dashboard')
-      .then(res => setData(res.data))
-      .catch(() => setError('Unable to fetch dashboard data ❌'));
+    API.get("/dashboard")
+      .then((res) => setData(res.data.message))
+      .catch((err) => setData("Unable to fetch dashboard data ❌"));
   }, []);
 
-  if (error) return <div>{error}</div>;
-  if (!data) return <div>Loading...</div>;
-
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <p>Total Users: {data.totalUsers}</p>
-      <p>Total Messages: {data.totalMessages}</p>
-      <p>Total Payments: {data.totalPayments}</p>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+      <h2 className="text-3xl font-bold mb-6">Dashboard</h2>
+      <p>{data}</p>
     </div>
   );
 }

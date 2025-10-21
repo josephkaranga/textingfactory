@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  // Live earnings counter
+  useEffect(() => {
+    let start = 0;
+    const end = 120000; // Example earnings
+    const duration = 2000;
+    let increment = end / (duration / 50);
+    const counter = document.getElementById('totalEarnings');
+    const interval = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        start = end;
+        clearInterval(interval);
+      }
+      if (counter) counter.innerText = start.toLocaleString();
+    }, 50);
+  }, []);
+
   return (
     <div className="font-sans">
       <Navbar />
@@ -18,7 +35,8 @@ const Home = () => {
             Work From Home as a Chat Operator 💬
           </h1>
           <p className="text-lg mb-8 max-w-2xl mx-auto">
-            Earn money online chatting with customers and helping businesses engage their users — anytime, anywhere.
+            As a freelancer with Texting Factory you can work from anywhere in the world.
+            You’ll work online when you want, from where you want, and as much as you want.
           </p>
           <Link
             to="/register"
@@ -78,26 +96,88 @@ const Home = () => {
 
       {/* TESTIMONIALS */}
       <section id="testimonials" className="py-20 px-6 bg-white text-center">
-        <h2 className="text-3xl font-bold mb-12">What Our Chat Operators Say</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-12">What Our Chat Operators Say</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div className="p-6 bg-gray-50 rounded-lg shadow">
-            <p className="italic">
+          {/* Lisa */}
+          <div className="p-6 bg-gray-50 rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
+            <img 
+              src="/images/lisa.jpg"
+              alt="Lisa" 
+              className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover mb-4 border-2 border-blue-500"
+            />
+            <p className="italic text-gray-700 mb-2">
               “The best remote job ever — I can work while caring for my kids!”
             </p>
-            <p className="mt-4 font-bold">– Lisa, Kenya 🇰🇪</p>
+            <p className="mt-2 font-bold text-gray-900">– Lisa, Kenya 🇰🇪</p>
           </div>
-          <div className="p-6 bg-gray-50 rounded-lg shadow">
-            <p className="italic">
+
+          {/* Mark */}
+          <div className="p-6 bg-gray-50 rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
+            <img 
+              src="/images/mark.jpg" 
+              alt="Mark" 
+              className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover mb-4 border-2 border-green-500"
+            />
+            <p className="italic text-gray-700 mb-2">
               “They pay weekly and the chats are fun. I’ve already made $500 this month.”
             </p>
-            <p className="mt-4 font-bold">– Mark, South Africa 🇿🇦</p>
+            <p className="mt-2 font-bold text-gray-900">– Mark, South Africa 🇿🇦</p>
           </div>
-          <div className="p-6 bg-gray-50 rounded-lg shadow">
-            <p className="italic">
+
+          {/* Grace */}
+          <div className="p-6 bg-gray-50 rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
+            <img 
+              src="/images/grace.jpg" 
+              alt="Grace" 
+              className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover mb-4 border-2 border-pink-500"
+            />
+            <p className="italic text-gray-700 mb-2">
               “Started part-time — now I do this full-time and love it.”
             </p>
-            <p className="mt-4 font-bold">– Grace, Rwanda 🇷🇼</p>
+            <p className="mt-2 font-bold text-gray-900">– Grace, Rwanda 🇷🇼</p>
           </div>
+        </div>
+      </section>
+
+      {/* TRUSTED BY CLIENTS */}
+      <section className="py-16 bg-gray-100 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-12">Trusted By</h2>
+        <div className="flex flex-wrap items-center justify-center gap-8 max-w-6xl mx-auto">
+          <img src="/images/logo1.png" alt="Company 1" className="h-12 md:h-16 object-contain" />
+          <img src="/images/logo2.png" alt="Company 2" className="h-12 md:h-16 object-contain" />
+          <img src="/images/logo3.png" alt="Company 3" className="h-12 md:h-16 object-contain" />
+          <img src="/images/logo4.png" alt="Company 4" className="h-12 md:h-16 object-contain" />
+        </div>
+      </section>
+
+      {/* LIVE EARNINGS COUNTER */}
+      <section className="py-16 bg-white text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-12">Our Chat Operators Earned So Far</h2>
+        <div className="flex flex-col md:flex-row justify-center items-center gap-12 max-w-6xl mx-auto text-gray-800">
+          <div className="text-4xl md:text-5xl font-bold text-blue-600">
+            $<span id="totalEarnings">0</span>
+          </div>
+          <div className="text-lg md:text-xl">
+            <p>Total Earnings Distributed</p>
+            <p className="text-gray-500">Since platform launch</p>
+          </div>
+        </div>
+      </section>
+
+      {/* VIDEO DEMO */}
+      <section className="py-16 bg-gray-50 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-12">See How It Works</h2>
+        <div className="max-w-4xl mx-auto">
+          <iframe
+            width="100%"
+            height="315"
+            src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+            title="Texting Factory Demo"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="rounded-lg shadow-lg"
+          ></iframe>
         </div>
       </section>
 

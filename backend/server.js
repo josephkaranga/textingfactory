@@ -7,6 +7,11 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
+import dashboardRoutes from './routes/dashboard.js';
+app.use('/api/dashboard', dashboardRoutes);
+
+
+
 
 // Import routes
 import authRoutes from './routes/authRoutes.js';

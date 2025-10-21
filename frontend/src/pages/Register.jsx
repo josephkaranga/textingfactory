@@ -1,94 +1,70 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import API from "../api/api";
+import { useNavigate } from "react-router-dom";
 
-const Register = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+export default function Register() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    console.log("Registration data:", formData);
-    alert("Registration successful (mock) — connect backend next.");
+    try {
+      await API.post("/auth/register", { name, email, password });
+      const res = await API.post("/auth/activate", { email, phone });
+      setMessage(res.data.message);
+    } catch (err) {
+      setMessage(err.response?.data?.error || "Something went wrong");
+    }
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <Navbar />
-      <div className="flex-grow flex justify-center items-center px-6 py-12">
-        <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
-          <h2 className="text-3xl font-bold text-center text-blue-600 mb-6">
-            Create Your Account
-          </h2>
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div>
-              <label className="block text-gray-700 font-medium mb-1">
-                Full Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                onChange={handleChange}
-                value={formData.name}
-                required
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
-                placeholder="John Doe"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 font-medium mb-1">
-                Email Address
-              </label>
-              <input
-                type="email"
-                name="email"
-                onChange={handleChange}
-                value={formData.email}
-                required
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
-                placeholder="you@example.com"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 font-medium mb-1">
-                Password
-              </label>
-              <input
-                type="password"
-                name="password"
-                onChange={handleChange}
-                value={formData.password}
-                required
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
-                placeholder="••••••••"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 font-medium"
-            >
-              Register
-            </button>
-          </form>
-          <p className="text-center text-gray-600 mt-6">
-            Already have an account?{" "}
-            <Link to="/login" className="text-blue-600 hover:underline">
-              Login here
-            </Link>
-          </p>
-        </div>
-      </div>
-      <Footer />
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+      <h2 className="text-3xl font-bold mb-6">Register & Activate</h2>
+      {message && <p className="mb-4 text-red-500">{message}</p>}
+      <form onSubmit={handleRegister} className="flex flex-col space-y-4 w-80">
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="p-2 border rounded"
+          required
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="p-2 border rounded"
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="p-2 border rounded"
+          required
+        />
+        <input
+          type="tel"
+          placeholder="Phone (MPESA)"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          className="p-2 border rounded"
+          required
+        />
+        <button
+          type="submit"
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+          Pay 2,000 KES & Register
+        </button>
+      </form>
     </div>
   );
-};
-
-export default Register;
+}
