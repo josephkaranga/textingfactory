@@ -3,6 +3,9 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 
+// Import video
+import VideoGirl from "../assets/texting-factory-video-girl-1.mp4";
+
 const Home = () => {
   // Live earnings counter
   useEffect(() => {
@@ -10,7 +13,7 @@ const Home = () => {
     const end = 120000; // Example earnings
     const duration = 2000;
     let increment = end / (duration / 50);
-    const counter = document.getElementById('totalEarnings');
+    const counter = document.getElementById("totalEarnings");
     const interval = setInterval(() => {
       start += increment;
       if (start >= end) {
@@ -35,8 +38,9 @@ const Home = () => {
             Work From Home as a Chat Operator 💬
           </h1>
           <p className="text-lg mb-8 max-w-2xl mx-auto">
-            As a freelancer with Texting Factory you can work from anywhere in the world.
-            You’ll work online when you want, from where you want, and as much as you want.
+            As a freelancer with Texting Factory you can work from anywhere in
+            the world. You’ll work online when you want, from where you want,
+            and as much as you want.
           </p>
           <Link
             to="/register"
@@ -75,7 +79,8 @@ const Home = () => {
         <div className="max-w-4xl mx-auto">
           <p className="text-lg mb-8">
             Most chat operators earn{" "}
-            <span className="font-bold text-blue-600">$300 - $800 per week</span>, depending on activity and hours worked.
+            <span className="font-bold text-blue-600">$300 - $800 per week</span>
+            , depending on activity and hours worked.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow">
@@ -96,13 +101,15 @@ const Home = () => {
 
       {/* TESTIMONIALS */}
       <section id="testimonials" className="py-20 px-6 bg-white text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12">What Our Chat Operators Say</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-12">
+          What Our Chat Operators Say
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Lisa */}
           <div className="p-6 bg-gray-50 rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
-            <img 
+            <img
               src="/images/lisa.jpg"
-              alt="Lisa" 
+              alt="Lisa"
               className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover mb-4 border-2 border-blue-500"
             />
             <p className="italic text-gray-700 mb-2">
@@ -113,22 +120,23 @@ const Home = () => {
 
           {/* Mark */}
           <div className="p-6 bg-gray-50 rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
-            <img 
-              src="/images/mark.jpg" 
-              alt="Mark" 
+            <img
+              src="/images/mark.jpg"
+              alt="Mark"
               className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover mb-4 border-2 border-green-500"
             />
             <p className="italic text-gray-700 mb-2">
-              “They pay weekly and the chats are fun. I’ve already made $500 this month.”
+              “They pay weekly and the chats are fun. I’ve already made $500
+              this month.”
             </p>
             <p className="mt-2 font-bold text-gray-900">– Mark, South Africa 🇿🇦</p>
           </div>
 
           {/* Grace */}
           <div className="p-6 bg-gray-50 rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:-translate-y-2 hover:shadow-2xl">
-            <img 
-              src="/images/grace.jpg" 
-              alt="Grace" 
+            <img
+              src="/images/grace.jpg"
+              alt="Grace"
               className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover mb-4 border-2 border-pink-500"
             />
             <p className="italic text-gray-700 mb-2">
@@ -139,49 +147,25 @@ const Home = () => {
         </div>
       </section>
 
-      {/* TRUSTED BY CLIENTS */}
-      <section className="py-16 bg-gray-100 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12">Trusted By</h2>
-        <div className="flex flex-wrap items-center justify-center gap-8 max-w-6xl mx-auto">
-          <img src="/images/logo1.png" alt="Company 1" className="h-12 md:h-16 object-contain" />
-          <img src="/images/logo2.png" alt="Company 2" className="h-12 md:h-16 object-contain" />
-          <img src="/images/logo3.png" alt="Company 3" className="h-12 md:h-16 object-contain" />
-          <img src="/images/logo4.png" alt="Company 4" className="h-12 md:h-16 object-contain" />
+      {/* SEE HOW IT WORKS VIDEO */}
+      <section className="see-how-it-works py-16">
+        <h2 className="text-3xl font-bold text-center mb-6">See How It Works</h2>
+
+        <div className="flex justify-center">
+          <video
+            width="800"
+            height="450"
+            controls
+            autoPlay
+            muted
+            loop
+            style={{ borderRadius: "12px", boxShadow: "0 0 15px rgba(0,0,0,0.2)" }}
+          >
+            <source src={VideoGirl} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </section>
-
-      {/* LIVE EARNINGS COUNTER */}
-      <section className="py-16 bg-white text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12">Our Chat Operators Earned So Far</h2>
-        <div className="flex flex-col md:flex-row justify-center items-center gap-12 max-w-6xl mx-auto text-gray-800">
-          <div className="text-4xl md:text-5xl font-bold text-blue-600">
-            $<span id="totalEarnings">0</span>
-          </div>
-          <div className="text-lg md:text-xl">
-            <p>Total Earnings Distributed</p>
-            <p className="text-gray-500">Since platform launch</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="see-how-it-works">
-  <h2 className="text-3xl font-bold text-center mb-6">See How It Works</h2>
-
-  <div className="flex justify-center">
-    <video
-      width="800"
-      height="450"
-      controls
-      autoPlay
-      muted
-      loop
-      style={{ borderRadius: "12px", boxShadow: "0 0 15px rgba(0,0,0,0.2)" }}
-    >
-      <source src="/texting-factory-video-girl-1.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</section>
 
       {/* CALL TO ACTION */}
       <section className="py-20 bg-blue-600 text-white text-center">
