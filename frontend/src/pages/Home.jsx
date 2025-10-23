@@ -165,21 +165,24 @@ const Home = () => {
       </section>
 
       {/* VIDEO DEMO */}
-      <section className="py-16 bg-gray-50 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12">See How It Works</h2>
-        <div className="max-w-4xl mx-auto">
-          <iframe
-            width="100%"
-            height="315"
-            src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-            title="Texting Factory Demo"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="rounded-lg shadow-lg"
-          ></iframe>
-        </div>
-      </section>
+   {/* HOW IT WORKS */}
+<section id="how" className="py-20 px-6 bg-white text-center">
+  <h2 className="text-3xl font-bold mb-12">See How It Works</h2>
+
+  <div className="max-w-4xl mx-auto">
+    <video
+      src="/videos/texting-factory-video-girl-1.mp4"
+      controls
+      autoPlay
+      muted
+      loop
+      playsInline
+      className="w-full rounded-2xl shadow-lg"
+    >
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
 
       {/* CALL TO ACTION */}
       <section className="py-20 bg-blue-600 text-white text-center">
