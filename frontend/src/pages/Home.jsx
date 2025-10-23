@@ -164,23 +164,22 @@ const Home = () => {
         </div>
       </section>
 
-      {/* VIDEO DEMO */}
-   {/* HOW IT WORKS */}
-<section id="how" className="py-20 px-6 bg-white text-center">
-  <h2 className="text-3xl font-bold mb-12">See How It Works</h2>
+      <section className="see-how-it-works">
+  <h2 className="text-3xl font-bold text-center mb-6">See How It Works</h2>
 
-  <div className="max-w-4xl mx-auto">
+  <div className="flex justify-center">
     <video
-       source src="/texting-factory-video-girl-1.mp4" type="video/mp4"/>
+      width="800"
+      height="450"
       controls
       autoPlay
       muted
       loop
-      playsInline
-      className="w-full rounded-2xl shadow-lg"
-    
+      style={{ borderRadius: "12px", boxShadow: "0 0 15px rgba(0,0,0,0.2)" }}
+    >
+      <source src="/texting-factory-video-girl-1.mp4" type="video/mp4" />
       Your browser does not support the video tag.
-    <var>video</var>
+    </video>
   </div>
 </section>
 
