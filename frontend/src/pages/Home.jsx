@@ -171,16 +171,16 @@ const Home = () => {
 
   <div className="max-w-4xl mx-auto">
     <video
-      src="/videos/texting-factory-video-girl-1.mp4"
+       source src="/texting-factory-video-girl-1.mp4" type="video/mp4"/>
       controls
       autoPlay
       muted
       loop
       playsInline
       className="w-full rounded-2xl shadow-lg"
-    >
+    
       Your browser does not support the video tag.
-    </video>
+    <var>video</var>
   </div>
 </section>
 
